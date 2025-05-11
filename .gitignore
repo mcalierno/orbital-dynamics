@@ -4,4 +4,4 @@ src/templates
 
 .DS_Store
 src/debris.pdf
-backend/flask-server/venv
+backend/flask-server/venv/
