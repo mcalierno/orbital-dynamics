@@ -1,0 +1,6 @@
+src/templates
+src/__pycache__
+src/templates
+
+.DS_Store
+src/debris.pdf
