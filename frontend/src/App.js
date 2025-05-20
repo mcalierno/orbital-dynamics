@@ -1,16 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect } from 'react';
+import InputCollection from './components/VariablesForm.js';
 
 function App() {
 
     const [data, setData] = useState([{}]);
 
     useEffect(() => {
-        fetch("/run").then(
-            res => res.json()
+        fetch("/run")
+        .then(
+            (res) => res.json()
         ).then(
-            data => {
+            (data) => {
                 setData(data);
             }
         )
@@ -19,6 +21,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+        <InputCollection />
         <p>
           {JSON.stringify(data)}
         </p>
