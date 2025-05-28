@@ -5,3 +5,7 @@ src/templates
 .DS_Store
 src/debris.pdf
 backend/flask-server/venv/
+backend/models/__pycache__/ode_rk4.cpython-312.pyc
+backend/models/__pycache__/orbital_dynamics_ode.cpython-312.pyc
+backend/models/__pycache__/run_spacecraft.cpython-312.pyc
+backend/models/__pycache__/spacecraft.cpython-312.pyc
