@@ -47,10 +47,30 @@ export default function InputCollection ()
             <form onSubmit={handleSubmit}>
                 {rowValues.map((row, idx) => (
                     <div key={idx} style={{ marginBottom: "1em", border: "1px solid #ccc", padding: "1em" }}>
-                        <InputRow idx={idx} form={row} handleInputChange={handleInputChange} />
+                        <InputRow idx={idx} form={row} handleInputChange={handleInputChange} onClickDelete={() => setRowValues(rowValues.filter((_, i) => i !== idx))}/>
+                        {rowValues.length > 1 && (
+                            <button
+                                type="button"
+                                onClick={() => setRowValues(rowValues.filter((_, i) => i !== idx))}
+                                style={{
+                                    marginLeft: "1em",
+                                    background: "none",
+                                    border: "none",
+                                    color: "red",
+                                    fontSize: "1.5em",
+                                    cursor: rowValues.length > 1 ? "pointer" : "not-allowed",
+                                    lineHeight: "1"
+                                }}
+                                disabled={rowValues.length === 1}
+                                aria-label={`Delete row ${idx + 1}`}
+                                title="Delete row"
+                            >
+                                &#10006;
+                            </button>
+                        )}
                     </div>
                 ))}
-                <button type="button" onClick={addRow} disabled={rowValues.length >= 5}> Add Another Form</button>
+                <button type="button" onClick={addRow} disabled={rowValues.length >= 5}> Add Another Row</button>
                 <input type="submit" value="Submit All" />
             </form>
         </>
