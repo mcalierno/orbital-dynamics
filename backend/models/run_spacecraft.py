@@ -35,6 +35,8 @@ def run_server(style, Fr, Ftheta, t_thrust, label):
                             h  = 4e5,
                             m  = 4000) 
     tmin,dmin = spacecraft.min_dist_to_target(Fr, Ftheta, t_thrust, tmax, dt, gdt)
+    spacecraft.plot(1, 3, style)
+    plt.ticklabel_format(style='sci', axis='x', scilimits=(0,0))
 
     return({"Fr":Fr, "Ftheta":Ftheta, "t_thrust":t_thrust, "dmin":dmin, "tmin":tmin, "Fuel":(abs(Fr)+abs(Ftheta))*t_thrust})
     

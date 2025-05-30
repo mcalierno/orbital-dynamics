@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import InputRow from './InputRow';
-
-export default function InputCollection ()
+import './VariablesForm.css';export default function InputCollection ({ setPlot })
 {
     const [rowValues, setRowValues] = useState([
         {F_r: "", F_theta: "", t_thrust: ""}
@@ -34,8 +33,9 @@ export default function InputCollection ()
             body: JSON.stringify({ rowValues })
         })
         .then((response) => response.json())
-        .then((newValues) => {
-            console.log(newValues);
+        .then((data) => {
+            console.log(data.results);
+            if (setPlot && data.plot) setPlot(data.plot);
         })
         .catch((error) => {
             console.log(error);
@@ -46,24 +46,14 @@ export default function InputCollection ()
         <>
             <form onSubmit={handleSubmit}>
                 {rowValues.map((row, idx) => (
-                    <div key={idx} style={{ marginBottom: "1em", border: "1px solid #ccc", padding: "1em" }}>
+                    <div key={idx} style={{ display: "flex", alignItems: "center", margin: "0.2em"}}>
                         <InputRow idx={idx} form={row} handleInputChange={handleInputChange} onClickDelete={() => setRowValues(rowValues.filter((_, i) => i !== idx))}/>
                         {rowValues.length > 1 && (
                             <button
                                 type="button"
                                 onClick={() => setRowValues(rowValues.filter((_, i) => i !== idx))}
-                                style={{
-                                    marginLeft: "1em",
-                                    background: "none",
-                                    border: "none",
-                                    color: "red",
-                                    fontSize: "1.5em",
-                                    cursor: rowValues.length > 1 ? "pointer" : "not-allowed",
-                                    lineHeight: "1"
-                                }}
-                                disabled={rowValues.length === 1}
-                                aria-label={`Delete row ${idx + 1}`}
-                                title="Delete row"
+                                className="delete-row-btn"
+                                // disabled={rowValues.length <= 1}
                             >
                                 &#10006;
                             </button>
