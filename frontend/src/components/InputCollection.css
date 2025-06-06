@@ -1,3 +1,26 @@
+.default-btn {
+  background-color: #3c424f;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  width: 7em;
+  height: 1.8em;
+  font-size: 0.6em;
+  margin: 0.3em 0.5em;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(40,44,52,0.08);
+}
+
+.default-btn:hover:not(:disabled) {
+  background-color: #6d7076;
+}
+
+.default-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
 .delete-row-btn{
     margin-left: 0.5em;
     background: none;

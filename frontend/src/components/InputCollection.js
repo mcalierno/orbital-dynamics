@@ -45,8 +45,8 @@ export default function InputCollection ({ rowValues, setRowValues, setPlot, set
     return (
         <>
             <form onSubmit={handleSubmit}>
-                <button type="button" onClick={addRow} disabled={rowValues.length >= 5}> Add Row</button>
-                <input type="submit" value="Submit All" />
+                <button type="button" onClick={addRow} disabled={rowValues.length >= 5} className="default-btn"> Add Row</button>
+                <input type="submit" value="Submit All" className="default-btn"/>
                 {rowValues.map((row, idx) => (
                     <div key={idx} style={{ display: "flex", alignItems: "center", margin: "0.2em"}}>
                         <InputRow 
