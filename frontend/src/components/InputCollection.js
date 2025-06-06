@@ -61,6 +61,20 @@ export default function InputCollection ({ rowValues, setRowValues, setPlot, set
                                 &#10006;
                             </button>
                         )}
+                        {rowValues.length < 5 && (
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    const newRows = [...rowValues];
+                                    newRows.splice(idx + 1, 0, { ...row });
+                                    setRowValues(newRows);
+                                }}
+                                className="duplicate-row-btn"
+                                title="Duplicate"
+                            >
+                                &#x2398;
+                            </button>
+                        )}
                     </div>
                 ))}
                 <button type="button" onClick={addRow} disabled={rowValues.length >= 5}> Add Row</button>

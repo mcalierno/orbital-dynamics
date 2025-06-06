@@ -10,3 +10,18 @@
     align-items: center;
     justify-content: center;
 }
+
+.duplicate-row-btn {
+  background: none;
+  border: none;
+  color: #4caf50;
+  font-size: 1em;
+  cursor: pointer;
+  margin-left: 0.25em;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.duplicate-row-btn:hover {
+  background: #e8f5e9;
+}
