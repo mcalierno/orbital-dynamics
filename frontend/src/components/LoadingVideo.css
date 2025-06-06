@@ -1,0 +1,15 @@
+.loading-video-container {
+  position: relative;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.loading-video {
+  padding: 0;
+  margin: 0;
+  display: block;
+  /* Fade out edges with a radial gradient mask */
+  -webkit-mask-image: radial-gradient(circle, #282c34 100%, transparent 10%);
+  mask-image: radial-gradient(#282c34 30%, transparent 55%);
+}

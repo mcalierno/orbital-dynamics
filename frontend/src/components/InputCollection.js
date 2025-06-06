@@ -1,13 +1,9 @@
 import { useState } from 'react';
 import InputRow from './InputRow';
-import './VariablesForm.css';
+import './InputCollection.css';
 
-export default function InputCollection ({ setPlot })
+export default function InputCollection ({ rowValues, setRowValues, setPlot, setLoading })
 {
-    const [rowValues, setRowValues] = useState([
-        {F_r: "", F_theta: "", t_thrust: ""}
-    ]);
-
     function addRow() 
     {
         setRowValues([...rowValues, {F_r: "", F_theta: "", t_thrust: ""}]);
@@ -24,6 +20,7 @@ export default function InputCollection ({ setPlot })
     function handleSubmit(event) 
     {
         event.preventDefault();
+        setLoading(true);
 
         fetch("http://localhost:6950/run_server",
         {
@@ -36,10 +33,11 @@ export default function InputCollection ({ setPlot })
         })
         .then((response) => response.json())
         .then((data) => {
-            console.log(data.results);
+            setLoading(false);
             if (setPlot && data.plot) setPlot(data.plot);
         })
         .catch((error) => {
+            setLoading(false);
             console.log(error);
         });
     }
@@ -65,7 +63,7 @@ export default function InputCollection ({ setPlot })
                         )}
                     </div>
                 ))}
-                <button type="button" onClick={addRow} disabled={rowValues.length >= 5}> Add Another Row</button>
+                <button type="button" onClick={addRow} disabled={rowValues.length >= 5}> Add Row</button>
                 <input type="submit" value="Submit All" />
             </form>
         </>

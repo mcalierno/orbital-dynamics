@@ -29,11 +29,8 @@ def run(style, Fr, Ftheta, t_thrust, label):
 
 
 def run_server(style, Fr, Ftheta, t_thrust, label):
-    spacecraft = Spacecraft(V0 = [0,0,0,0],     # initial condition set later
-                            dt = dt, 
-                            t0 = 0,
-                            h  = 4e5,
-                            m  = 4000) 
+    spacecraft.reset(V0 = [0,0,0,0], dt = dt, t0 = 0,)
+    
     tmin,dmin = spacecraft.min_dist_to_target(Fr, Ftheta, t_thrust, tmax, dt, gdt)
     spacecraft.plot(1, 3, style)
     plt.ticklabel_format(style='sci', axis='x', scilimits=(0,0))
