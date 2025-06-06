@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import InputRow from './InputRow';
-import './VariablesForm.css';export default function InputCollection ({ setPlot })
+import './VariablesForm.css';
+
+export default function InputCollection ({ setPlot })
 {
     const [rowValues, setRowValues] = useState([
         {F_r: "", F_theta: "", t_thrust: ""}
@@ -47,13 +49,16 @@ import './VariablesForm.css';export default function InputCollection ({ setPlot 
             <form onSubmit={handleSubmit}>
                 {rowValues.map((row, idx) => (
                     <div key={idx} style={{ display: "flex", alignItems: "center", margin: "0.2em"}}>
-                        <InputRow idx={idx} form={row} handleInputChange={handleInputChange} onClickDelete={() => setRowValues(rowValues.filter((_, i) => i !== idx))}/>
+                        <InputRow 
+                            idx={idx}
+                            form={row}
+                            handleInputChange={handleInputChange}
+                        />
                         {rowValues.length > 1 && (
                             <button
                                 type="button"
                                 onClick={() => setRowValues(rowValues.filter((_, i) => i !== idx))}
                                 className="delete-row-btn"
-                                // disabled={rowValues.length <= 1}
                             >
                                 &#10006;
                             </button>
