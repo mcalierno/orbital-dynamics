@@ -1,4 +1,5 @@
 import rocket from './rocket.png';
+import logo from './logo.png';
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import InputCollection from './components/InputCollection.js';
@@ -14,7 +15,8 @@ function App() {
 
     return (
         <div className="App">
-            <header className="App-header">
+            <div className="App-body">
+                <img src={logo} height={120}/>
                 {(!plot && !loading) && (
                     <img src={rocket} style={{padding: "50px"}} alt="logo" />
                 )}
@@ -24,7 +26,7 @@ function App() {
                 <a href="/OrbitalDynamicsEssay.pdf" target="_blank" rel="noopener noreferrer">
                     OrbitalDynamicsEssay.pdf
                 </a>
-            </header>
+            </div>
         </div>
     );
 }

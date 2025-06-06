@@ -13,14 +13,27 @@
   }
 }
 
-.App-header {
-  background: radial-gradient(circle at 50% 25%, #000002 18%, #282c34 60%);
-  /* background-color: #282c34; 121114 */
-  min-height: 100vh;
+/* .App-header {
+  background-color: #0f0f14;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  position: sticky;
+    z-index: 999;
+    box-shadow: 0 10px 24px rgba(28, 35, 51, 0.5);
+} */
+
+.App-body {
+  background: radial-gradient(circle at 50% 25%, #000002 18%, #282c34 60%);
+  /* background-color: #282c34; */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: top;
   font-size: calc(10px + 2vmin);
   color: white;
 }
