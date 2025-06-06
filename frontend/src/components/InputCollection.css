@@ -3,12 +3,23 @@
     background: none;
     border: none;
     color: red;
-    font-size: 0.8em;
+    font-size: 0.9em;
     line-height: 1;
     cursor: pointer;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.delete-row-btn:hover {
+  background: #a83030;
+}
+
+.delete-row-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
 }
 
 .duplicate-row-btn {
@@ -18,10 +29,17 @@
   font-size: 1em;
   cursor: pointer;
   margin-left: 0.25em;
+  padding-left: 0.3em;
+  padding-right: 0.25em;
   border-radius: 6px;
   transition: background 0.2s;
 }
 
 .duplicate-row-btn:hover {
   background: #e8f5e9;
+}
+
+.duplicate-row-btn:disabled {
+  opacity: 0.5;
+  cursor: default;
 }

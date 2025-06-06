@@ -54,29 +54,28 @@ export default function InputCollection ({ rowValues, setRowValues, setPlot, set
                             form={row}
                             handleInputChange={handleInputChange}
                         />
-                        {rowValues.length > 1 && (
-                            <button
-                                type="button"
-                                onClick={() => setRowValues(rowValues.filter((_, i) => i !== idx))}
-                                className="delete-row-btn"
-                            >
-                                &#10006;
-                            </button>
-                        )}
-                        {rowValues.length < 5 && (
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    const newRows = [...rowValues];
-                                    newRows.splice(idx + 1, 0, { ...row });
-                                    setRowValues(newRows);
-                                }}
-                                className="duplicate-row-btn"
-                                title="Duplicate"
-                            >
-                                &#x2398;
-                            </button>
-                        )}
+                        <button
+                            type="button"
+                            onClick={() => setRowValues(rowValues.filter((_, i) => i !== idx))}
+                            className="delete-row-btn"
+                            title="Delete"
+                            disabled={rowValues.length <= 1}
+                        >
+                            &#10006;
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => {
+                                const newRows = [...rowValues];
+                                newRows.splice(idx + 1, 0, { ...row });
+                                setRowValues(newRows);
+                            }}
+                            className="duplicate-row-btn"
+                            title="Duplicate"
+                            disabled={rowValues.length >= 5}
+                        >
+                            &#x2398;
+                        </button>
                     </div>
                 ))}
             </form>
