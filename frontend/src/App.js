@@ -13,6 +13,9 @@ function App() {
         <img src={rocket} style={{padding: "50px"}} alt="logo" />
         <InputCollection setPlot={setPlot} />
         <PlotDisplay plot={plot}/>
+        <a href="/OrbitalDynamicsEssay.pdf" target="_blank" rel="noopener noreferrer">
+            OrbitalDynamicsEssay.pdf
+        </a>
       </header>
     </div>
   );
