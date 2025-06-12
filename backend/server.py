@@ -1,9 +1,7 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS
-import sys
-sys.path.insert(1, '/Users/Michael/Code/Projects/OrbitalDynamics/backend/models')
-import run_spacecraft
-import spacecraft
+from flask_cors import CORS, cross_origin
+from models import run_spacecraft
+from models import spacecraft
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt

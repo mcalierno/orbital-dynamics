@@ -16,14 +16,14 @@ function App() {
     return (
         <div className="App">
             <div className="App-body">
-                <img src={logo} height={120}/>
+                <img src={logo} height={100}/>
                 {(!plot && !loading) && (
-                    <img src={rocket} style={{padding: "50px"}} alt="logo" />
+                    <img src={rocket} style={{padding: "50px"}} alt="logo" height={500}/>
                 )}
                 <LoadingVideo loading={loading} rowValues={rowValues}/>
                 {!loading && <PlotDisplay plot={plot}/>}
                 <InputCollection setPlot={setPlot} setLoading={setLoading} rowValues={rowValues} setRowValues={setRowValues}/>
-                <a href="/OrbitalDynamicsEssay.pdf" target="_blank" rel="noopener noreferrer">
+                <a href="/OrbitalDynamicsEssay.pdf" target="_blank" rel="noopener noreferrer" className="pdf-link">
                     OrbitalDynamicsEssay.pdf
                 </a>
             </div>

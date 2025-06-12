@@ -1,7 +1,7 @@
 import math
 import numpy as np
 import matplotlib.pyplot as plt
-from spacecraft import *
+from models.spacecraft import *
 
 dt = 0.1
 gdt = 1

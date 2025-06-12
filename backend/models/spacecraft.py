@@ -1,4 +1,4 @@
-from orbital_dynamics_ode import *
+from models.orbital_dynamics_ode import *
 import math
 import numpy as np
 import matplotlib.pyplot as plt

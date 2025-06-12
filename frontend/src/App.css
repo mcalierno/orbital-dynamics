@@ -42,11 +42,16 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pdf-link {
+  /* display: inline-block; */
+  color: #b2acac;
+  font-size: 0.6em;
+  text-decoration: underline;
+  margin: 1em;
+  transition: background 0.2s, color 0.2s;
+}
+
+.pdf-link:hover {
+  color: #38538b;
+  text-decoration: underline;
 }
