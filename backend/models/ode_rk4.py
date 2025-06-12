@@ -1,6 +1,8 @@
 from abc import ABC, abstractmethod
 import matplotlib.pyplot as plt 
 import numpy as np
+from matplotlib.animation import FuncAnimation
+from math import floor
 
 # An abstract base class to compute the solution of differential equations 
 # using the fourth order Runge-Kutta method.
@@ -82,16 +84,64 @@ class ODE_RK4(ABC):
     #     j : index of function for ordinate
     #     format : format for the plot function
     def plot(self, i, j=0, style="k-"):
-
-        if(j==0):
+        if (j == 0):
             lx = self.t_list
-        else: # extra item i-1 from each element of f_list
-            lx = list(map (lambda v : v[j-1] , self.V_list))
-        if(i==0):
+        else:
+            lx = [v[j-1] for v in self.V_list]
+        if (i == 0):
             ly = self.t_list
         else:
-            ly = list(map (lambda v : v[i-1] , self.V_list))
-        plt.plot(lx, ly, style)
+            ly = [v[i-1] for v in self.V_list]
+
+        # Ensure all elements are floats (optional, but safe)
+        lx = np.array(lx, dtype=float)
+        ly = np.array(ly, dtype=float)
+
+        fig, ax = plt.subplots()
+        fig.patch.set_facecolor('black')      # Set figure background to black
+        ax.set_facecolor('black')             # Set axes background to black
+        line, = ax.plot([], [], 'b-')
+        ax.set_xlim(lx.min(), lx.max())
+        ax.set_ylim(ly.min(), ly.max())
+        print(lx.min(), lx.max())
+        
+        def init():
+            line.set_data([], [])
+            return line,
+
+        def update(frame):
+            line.set_data(lx[:frame*300], ly[:frame*300])
+            return line,
+
+        duration_sec = 0.1  # desired duration in seconds
+        n_frames = len(lx)
+        interval = (duration_sec * 1000) / n_frames  # ms per frame
+
+        ani = FuncAnimation(fig, update, frames=floor(n_frames/300), init_func=init, blit=True, interval=1)
+        # plt.show()  # Only for interactive use
+        return ani
+
+
+# # Example data
+# x = np.linspace(0, 2 * np.pi, 100)
+# y = np.sin(x)
+
+# fig, ax = plt.subplots()
+# line, = ax.plot([], [], 'b-')
+# ax.set_xlim(x.min(), x.max())
+# ax.set_ylim(y.min(), y.max())
+
+# def init():
+#     line.set_data([], [])
+#     return line,
+
+# def update(frame):
+#     line.set_data(x[:frame], y[:frame])
+#     return line,
+
+# ani = FuncAnimation(fig, update, frames=len(x), init_func=init, blit=True, interval=20)
+
+# plt.show()
 
 
 

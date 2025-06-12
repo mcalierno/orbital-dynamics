@@ -7,6 +7,9 @@ matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import io
 import base64
+import os
+import tempfile
+import matplotlib.animation as animation
 
 app = Flask(__name__)
 CORS(app)
@@ -30,16 +33,21 @@ def run_server():
     plt.clf() 
     x = []
     for index in data["rowValues"]:
-        result = run_spacecraft.run_server('b-', float(index.get("F_r")), float(index.get("F_theta")), float(index.get("t_thrust")), 'F_r=32, t_thrust=266')
+        result, ani = run_spacecraft.run_server('b-', float(index.get("F_r")), float(index.get("F_theta")), float(index.get("t_thrust")), 'F_r=32, t_thrust=266')
         x.append(result)
 
     # Save the plot to a BytesIO object
-    img = io.BytesIO()
-    plt.savefig(img, format='png')
-    img.seek(0)
-    img_base64 = base64.b64encode(img.read()).decode('utf-8')
-    
-    response = jsonify({"results": x, "plot": img_base64})
+    with tempfile.NamedTemporaryFile(delete=False, suffix=".gif") as temp_file:
+        writer = animation.PillowWriter(fps=30, metadata=dict(artist="Me"), bitrate=1800)
+        ani.save(temp_file.name, writer=writer)
+
+        # Read the file contents into a BytesIO object
+        temp_file.seek(0)
+        buf = io.BytesIO(temp_file.read())
+        gif = base64.b64encode(buf.getbuffer()).decode("ascii")  # return gif
+
+    os.remove(temp_file.name)
+    response = jsonify({"results": x, "plot": gif})
     response.headers.add('Access-Control-Allow-Origin', '*')
     
     return response

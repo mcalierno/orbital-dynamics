@@ -32,10 +32,10 @@ def run_server(style, Fr, Ftheta, t_thrust, label):
     spacecraft.reset(V0 = [0,0,0,0], dt = dt, t0 = 0,)
     
     tmin,dmin = spacecraft.min_dist_to_target(Fr, Ftheta, t_thrust, tmax, dt, gdt)
-    spacecraft.plot(1, 3, style)
+    ani = spacecraft.plot(1, 3, style)
     plt.ticklabel_format(style='sci', axis='x', scilimits=(0,0))
 
-    return({"Fr":Fr, "Ftheta":Ftheta, "t_thrust":t_thrust, "dmin":dmin, "tmin":tmin, "Fuel":(abs(Fr)+abs(Ftheta))*t_thrust})
+    return({"Fr":Fr, "Ftheta":Ftheta, "t_thrust":t_thrust, "dmin":dmin, "tmin":tmin, "Fuel":(abs(Fr)+abs(Ftheta))*t_thrust}, ani)
     
 
 # Fr = 0
