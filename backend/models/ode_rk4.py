@@ -122,27 +122,6 @@ class ODE_RK4(ABC):
         return ani
 
 
-# # Example data
-# x = np.linspace(0, 2 * np.pi, 100)
-# y = np.sin(x)
-
-# fig, ax = plt.subplots()
-# line, = ax.plot([], [], 'b-')
-# ax.set_xlim(x.min(), x.max())
-# ax.set_ylim(y.min(), y.max())
-
-# def init():
-#     line.set_data([], [])
-#     return line,
-
-# def update(frame):
-#     line.set_data(x[:frame], y[:frame])
-#     return line,
-
-# ani = FuncAnimation(fig, update, frames=len(x), init_func=init, blit=True, interval=20)
-
-# plt.show()
-
 
 
 

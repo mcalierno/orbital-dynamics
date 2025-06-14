@@ -18,7 +18,7 @@ export default function InputRow({ idx, form, handleInputChange })
                 value={form.F_theta}
                 onChange={e => handleInputChange(idx, "F_theta", e.target.value)}
             />
-            <label htmlFor={`t_thrust_${idx}`}>t<sub>thrust</sub>:</label>
+            <label htmlFor={`t_thrust_${idx}`}>t:</label>
             <input
                 type="number"
                 id={`t_thrust_${idx}`}

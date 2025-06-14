@@ -2,79 +2,79 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 from models.spacecraft import *
+from matplotlib.animation import FuncAnimation
+from math import floor
 
-dt = 0.1
-gdt = 1
-tmax = 4000
-labels=[]
-
-# Set up the spacecraft object
-spacecraft = Spacecraft(V0 = [0,0,0,0],     # initial condition set later
-                        dt = dt, 
-                        t0 = 0,
-                        h  = 4e5,
-                        m  = 4000) 
+index_z = 0
+index_phi = 2
 
 
-def run(style, Fr, Ftheta, t_thrust, label):
-    tmin,dmin = spacecraft.min_dist_to_target(Fr, Ftheta, t_thrust, tmax, dt, gdt)
+class RunSpacecraft(Spacecraft):
     
-    print("Fr={} Ftheta={} t_thrust={}".format(Fr, Ftheta, t_thrust))
-    print("dmin={}, tmin={} Fuel={}"\
-        .format(dmin,tmin,(abs(Fr)+abs(Ftheta))*t_thrust))
+  def run_model(self, row_values):
+    results=[]
+    lx_list=[]
+    ly_list=[]
+
+    for index in row_values:
+        F_r = float(index.get("F_r"))
+        F_theta = float(index.get("F_theta"))
+        t_thrust = float(index.get("t_thrust"))
+
+        self.set_params(Fr, Ftheta, t_thrust, dt, z0=-1000, phi0_m=-2000)
+        self.iterate(tmax=4000)
+        tmin, dmin = self.min_dist_to_target(tmax=4000)
+        results.append({"Fr":F_r, "Ftheta":F_theta, "t_thrust":t_thrust, "dmin":dmin, "tmin":tmin, "Fuel":(abs(F_r)+abs(F_theta))*t_thrust})
+        
+        lx_list.append([v[index_phi] for v in self.V_list])
+        ly_list.append([v[index_z] for v in self.V_list])
     
-    spacecraft.plot(1, 3, style)
-    plt.ticklabel_format(style='sci', axis='x', scilimits=(0,0))
-    labels.append(label)
+    ani = self.draw_animation(lx_list, ly_list, duration_sec=2)
+    return results, ani
+  
+
+  def draw_animation(list_of_lx, list_of_ly, duration_sec=2):
+    fig, ax = plt.subplots()
+    fig.patch.set_facecolor('black')
+    ax.set_facecolor('black')
+
+    n_lines = len(list_of_lx)
+
+    color_cycle = plt.rcParams['axes.prop_cycle'].by_key()['color']
+    styles = [color_cycle[i % len(color_cycle)] + '-' for i in range(n_lines)]
+    styles = ['b-', 'g-', 'y-', 'r-', 'c-']
+    # Create a Line2D object for each line
+    lines = []
+    for lx, ly, style in zip(list_of_lx, list_of_ly, styles):
+        line, = ax.plot([], [], style)
+        lines.append(line)
+
+    # Set axis limits based on all data
+    all_x = np.concatenate(list_of_lx)
+    all_y = np.concatenate(list_of_ly)
+    ax.set_xlim(all_x.min(), all_x.max())
+    ax.set_ylim(all_y.min(), all_y.max())
+    # ax.set_ylim(-1000, 1000)
+    ax.plot(0, 0, 'r+')
+
+    def init():
+        for line in lines:
+            line.set_data([], [])
+        return tuple(lines)
+
+    def update(frame):
+        for idx, line in enumerate(lines):
+            lx = list_of_lx[idx]
+            ly = list_of_ly[idx]
+            line.set_data(lx[:frame*300], ly[:frame*300])
+        return tuple(lines)
+
+    n_frames = max(len(lx) for lx in list_of_lx)
+    interval = (duration_sec * 1000) / n_frames
+
+    ani = FuncAnimation(fig, update, frames=floor(n_frames/300), init_func=init, blit=True, interval=1)
+    return ani
 
 
-def run_server(style, Fr, Ftheta, t_thrust, label):
-    spacecraft.reset(V0 = [0,0,0,0], dt = dt, t0 = 0,)
-    
-    tmin,dmin = spacecraft.min_dist_to_target(Fr, Ftheta, t_thrust, tmax, dt, gdt)
-    ani = spacecraft.plot(1, 3, style)
-    plt.ticklabel_format(style='sci', axis='x', scilimits=(0,0))
-
-    return({"Fr":Fr, "Ftheta":Ftheta, "t_thrust":t_thrust, "dmin":dmin, "tmin":tmin, "Fuel":(abs(Fr)+abs(Ftheta))*t_thrust}, ani)
-    
-
-# Fr = 0
-# Ftheta = 5
-# t_thrust = 453.2
-# run('b-', Fr, Ftheta, t_thrust, 'F_r=0, t_thrust=11.4')
 
 
-# Fr = 32
-# Ftheta = 100
-# t_thrust = 266
-# run('b-', Fr, Ftheta, t_thrust, 'F_r=32, t_thrust=266')
-
-# Fr = 16
-# Ftheta = 100
-# t_thrust = 17
-# run('orange', Fr, Ftheta, t_thrust, 'F_r=16, t_thrust=17')
-
-# Fr = 25
-# Ftheta = 100.
-# t_thrust = 15
-# run('black', Fr, Ftheta, t_thrust, 'F_r=25, t_thrust=15')
-
-# Fr = 8
-# Ftheta = 100
-# t_thrust = 12
-# run('g-', Fr, Ftheta, t_thrust, 'F_r=8, t_thrust=12')
-
-# Fr = 0
-# Ftheta = 100.
-# t_thrust = 12.2
-# run('r-', Fr, Ftheta, t_thrust, 'F_r=0, t_thrust=12.2')
-
-# print(labels)
-
-# plt.xlim(-3e-4, 1e-4)
-# plt.ylim(-1000, 1500)
-# plt.plot([0],[0],'r+')
-# plt.legend(labels, loc="upper left")
-# plt.xlabel('phi',fontsize=20)
-# plt.ylabel('z',fontsize=20)
-# plt.show()

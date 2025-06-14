@@ -1,7 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS, cross_origin
 from models import run_spacecraft
-from models import spacecraft
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
@@ -23,18 +22,10 @@ def test():
 
 @app.route('/run_server', methods=['POST'])
 def run_server():
-    # spacecraft = spacecraft.Spacecraft(V0 = [0,0,0,0],     # initial condition set later
-    #                     dt = dt, 
-    #                     t0 = 0,
-    #                     h  = 4e5,
-    #                     m  = 4000) 
     # do some validation checking here
     data = request.get_json()
     plt.clf() 
-    x = []
-    for index in data["rowValues"]:
-        result, ani = run_spacecraft.run_server('b-', float(index.get("F_r")), float(index.get("F_theta")), float(index.get("t_thrust")), 'F_r=32, t_thrust=266')
-        x.append(result)
+    results, ani = run_spacecraft.run_model(data["rowValues"])
 
     # Save the plot to a BytesIO object
     with tempfile.NamedTemporaryFile(delete=False, suffix=".gif") as temp_file:
@@ -47,7 +38,7 @@ def run_server():
         gif = base64.b64encode(buf.getbuffer()).decode("ascii")  # return gif
 
     os.remove(temp_file.name)
-    response = jsonify({"results": x, "plot": gif})
+    response = jsonify({"results": results, "plot": gif})
     response.headers.add('Access-Control-Allow-Origin', '*')
     
     return response

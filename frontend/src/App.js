@@ -1,5 +1,6 @@
 import rocket from './rocket.png';
 import logo from './logo.png';
+import earth from './earth.png';
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import InputCollection from './components/InputCollection.js';
@@ -22,6 +23,9 @@ function App() {
                 )}
                 <LoadingVideo loading={loading} rowValues={rowValues}/>
                 {!loading && <PlotDisplay plot={plot}/>}
+                <div className="image-crop-container">
+                    <img src={earth} className="spinning-earth"/>
+                </div>
                 <InputCollection setPlot={setPlot} setLoading={setLoading} rowValues={rowValues} setRowValues={setRowValues}/>
                 <a href="/OrbitalDynamicsEssay.pdf" target="_blank" rel="noopener noreferrer" className="pdf-link">
                     OrbitalDynamicsEssay.pdf
