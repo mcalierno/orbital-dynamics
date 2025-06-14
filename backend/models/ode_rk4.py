@@ -92,35 +92,7 @@ class ODE_RK4(ABC):
             ly = self.t_list
         else:
             ly = [v[i-1] for v in self.V_list]
-
-        # Ensure all elements are floats (optional, but safe)
-        lx = np.array(lx, dtype=float)
-        ly = np.array(ly, dtype=float)
-
-        fig, ax = plt.subplots()
-        fig.patch.set_facecolor('black')      # Set figure background to black
-        ax.set_facecolor('black')             # Set axes background to black
-        line, = ax.plot([], [], 'b-')
-        ax.set_xlim(lx.min(), lx.max())
-        ax.set_ylim(ly.min(), ly.max())
-        print(lx.min(), lx.max())
-        
-        def init():
-            line.set_data([], [])
-            return line,
-
-        def update(frame):
-            line.set_data(lx[:frame*300], ly[:frame*300])
-            return line,
-
-        duration_sec = 0.1  # desired duration in seconds
-        n_frames = len(lx)
-        interval = (duration_sec * 1000) / n_frames  # ms per frame
-
-        ani = FuncAnimation(fig, update, frames=floor(n_frames/300), init_func=init, blit=True, interval=1)
-        # plt.show()  # Only for interactive use
-        return ani
-
+        plt.plot(lx, ly, style)
 
 
 

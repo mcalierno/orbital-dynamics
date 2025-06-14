@@ -15,7 +15,7 @@ CORS(app)
 
 @app.route('/run', methods=['GET'])
 def test():
-    x = run_spacecraft.run_server('b-', 32, 100, 266, 'F_r=32, t_thrust=266')
+    x = server_spacecraft.run_server('b-', 32, 100, 266, 'F_r=32, t_thrust=266')
     response = jsonify(x)
     response.headers.add('Access-Control-Allow-Origin', '*')
     return response
@@ -25,7 +25,7 @@ def run_server():
     # do some validation checking here
     data = request.get_json()
     plt.clf() 
-    results, ani = run_spacecraft.run_model(data["rowValues"])
+    results, ani = server_spacecraft.run_model(data["rowValues"])
 
     # Save the plot to a BytesIO object
     with tempfile.NamedTemporaryFile(delete=False, suffix=".gif") as temp_file:
@@ -44,4 +44,9 @@ def run_server():
     return response
 
 if __name__ == '__main__':
+    server_spacecraft = run_spacecraft.RunSpacecraft(V0 = [0,0,0,0],   # Initialise RunSpacecraft object
+                                                      dt = 0.1, 
+                                                      t0 = 0,
+                                                      h  = 4e5,
+                                                      m  = 4000)
     app.run(port=6950, debug=True)

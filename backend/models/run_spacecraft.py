@@ -21,9 +21,9 @@ class RunSpacecraft(Spacecraft):
         F_theta = float(index.get("F_theta"))
         t_thrust = float(index.get("t_thrust"))
 
-        self.set_params(Fr, Ftheta, t_thrust, dt, z0=-1000, phi0_m=-2000)
+        self.set_params(F_r, F_theta, t_thrust, z0=-1000, phi0_m=-2000)
         self.iterate(tmax=4000)
-        tmin, dmin = self.min_dist_to_target(tmax=4000)
+        tmin, dmin = self.min_dist_to_target()
         results.append({"Fr":F_r, "Ftheta":F_theta, "t_thrust":t_thrust, "dmin":dmin, "tmin":tmin, "Fuel":(abs(F_r)+abs(F_theta))*t_thrust})
         
         lx_list.append([v[index_phi] for v in self.V_list])
@@ -33,7 +33,7 @@ class RunSpacecraft(Spacecraft):
     return results, ani
   
 
-  def draw_animation(list_of_lx, list_of_ly, duration_sec=2):
+  def draw_animation(self, list_of_lx, list_of_ly, duration_sec=2):
     fig, ax = plt.subplots()
     fig.patch.set_facecolor('black')
     ax.set_facecolor('black')

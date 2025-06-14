@@ -47,7 +47,7 @@ class Spacecraft(OrbitalDynamicsODE):
         return(self.min_min())
       
     
-      # Plot the trajectory of the spacecraft
+      # Plot the trajectory of the spacecraft for single spacecraft model
       def plot(self, i, j):
         if (j == 0):
             lx = self.t_list
