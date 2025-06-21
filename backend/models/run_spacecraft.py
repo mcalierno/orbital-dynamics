@@ -11,17 +11,20 @@ index_phi = 2
 
 class RunSpacecraft(Spacecraft):
     
-  def run_model(self, row_values):
+  def run_model(self, data):
     results=[]
     lx_list=[]
     ly_list=[]
 
-    for index in row_values:
+    z0 = float(data["initialConditions"].get("dist_vertical"))
+    phi0_m = float(data["initialConditions"].get("dist_horizontal"))
+
+    for index in data["rowValues"]:
         F_r = float(index.get("F_r"))
         F_theta = float(index.get("F_theta"))
         t_thrust = float(index.get("t_thrust"))
 
-        self.set_params(F_r, F_theta, t_thrust, z0=-1000, phi0_m=-2000)
+        self.set_params(F_r, F_theta, t_thrust, z0, phi0_m)
         self.iterate(tmax=4000)
         tmin, dmin = self.min_dist_to_target()
         results.append({"Fr":F_r, "Ftheta":F_theta, "t_thrust":t_thrust, "dmin":dmin, "tmin":tmin, "Fuel":(abs(F_r)+abs(F_theta))*t_thrust})

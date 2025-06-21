@@ -2,7 +2,7 @@ import { useState } from 'react';
 import InputRow from './InputRow';
 import './InputCollection.css';
 
-export default function InputCollection ({ rowValues, setRowValues, setPlot, setLoading })
+export default function InputCollection ({ rowValues, setRowValues, setPlot, setLoading, initialConditions, setResults })
 {
     function addRow() 
     {
@@ -29,12 +29,13 @@ export default function InputCollection ({ rowValues, setRowValues, setPlot, set
                 "Content-Type": "application/json",
                 'Access-Control-Allow-Origin': '*'
             },
-            body: JSON.stringify({ rowValues })
+            body: JSON.stringify({ initialConditions, rowValues })
         })
         .then((response) => response.json())
         .then((data) => {
             setLoading(false);
             if (setPlot && data.plot) setPlot(data.plot);
+            if (setResults && data.results) setResults(data.results)
         })
         .catch((error) => {
             setLoading(false);
@@ -43,7 +44,7 @@ export default function InputCollection ({ rowValues, setRowValues, setPlot, set
     }
 
     return (
-        <>
+        <div className="blur-container">
             <form onSubmit={handleSubmit}>
                 <button type="button" onClick={addRow} disabled={rowValues.length >= 5} className="default-btn"> Add Row</button>
                 <input type="submit" value="Submit All" className="default-btn"/>
@@ -79,6 +80,6 @@ export default function InputCollection ({ rowValues, setRowValues, setPlot, set
                     </div>
                 ))}
             </form>
-        </>
+        </ div>
     );
 }

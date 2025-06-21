@@ -1,0 +1,102 @@
+.results-panel {
+  position: fixed;
+  top: 4em;
+  right: 0em;
+  z-index: 20;
+  border-radius: 14px;
+  padding: 0.2em 0.5em;
+  color: white;
+  min-width: 320px;
+  max-width: 90vw;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  font-size: 0.75em; /* Smaller text */
+}
+
+.results-panel table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    margin: -8px 0;
+}
+
+.results-panel tr {
+    transition: all 0.2s ease;
+}
+
+.results-panel td {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px;
+    border-top: 1px solid rgba(79, 195, 247, 0.3);
+    border-bottom: 1px solid rgba(79, 195, 247, 0.3);
+    border-left: none;
+    border-right: none;
+}
+
+.results-panel tr.row-even td {
+    /* background: rgba(255, 255, 255, 0.05); */
+    border-color: rgba(255, 183, 77, 0.3);
+}
+
+.results-panel td:first-child {
+    border-left: 1px solid rgba(79, 195, 247, 0.3);
+    border-radius: 6px 0 0 6px;
+}
+
+.results-panel td:last-child {
+    border-right: 1px solid rgba(79, 195, 247, 0.3);
+    border-radius: 0 6px 6px 0;
+}
+
+/* Update the row-specific colors to include all border sides */
+/* Row 1 - Blue */
+.results-panel tr:nth-child(1) td {
+    border-top-color: rgba(79, 195, 247, 0.6);
+    border-bottom-color: rgba(79, 195, 247, 0.6);
+}
+.results-panel tr:nth-child(1) td:first-child { border-left-color: rgba(79, 195, 247, 0.6); }
+.results-panel tr:nth-child(1) td:last-child { border-right-color: rgba(79, 195, 247, 0.6); }
+
+/* Row 2 - Purple */
+.results-panel tr:nth-child(2) td {
+    border-top-color: rgba(171, 71, 188, 0.6);
+    border-bottom-color: rgba(171, 71, 188, 0.6);
+}
+.results-panel tr:nth-child(2) td:first-child { border-left-color: rgba(171, 71, 188, 0.6); }
+.results-panel tr:nth-child(2) td:last-child { border-right-color: rgba(171, 71, 188, 0.6); }
+
+/* Row 3 - Green */
+.results-panel tr:nth-child(3) td {
+    border-top-color: rgba(76, 175, 80, 0.6);
+    border-bottom-color: rgba(76, 175, 80, 0.6);
+}
+.results-panel tr:nth-child(3) td:first-child { border-left-color: rgba(76, 175, 80, 0.6); }
+.results-panel tr:nth-child(3) td:last-child { border-right-color: rgba(76, 175, 80, 0.6); }
+
+/* Row 4 - Orange */
+.results-panel tr:nth-child(4) td {
+    border-top-color: rgba(255, 152, 0, 0.6);
+    border-bottom-color: rgba(255, 152, 0, 0.6);
+}
+.results-panel tr:nth-child(4) td:first-child { border-left-color: rgba(255, 152, 0, 0.6); }
+.results-panel tr:nth-child(4) td:last-child { border-right-color: rgba(255, 152, 0, 0.6); }
+
+/* Row 5 - Pink */
+.results-panel tr:nth-child(5) td {
+    border-top-color: rgba(233, 30, 99, 0.6);
+    border-bottom-color: rgba(233, 30, 99, 0.6);
+}
+.results-panel tr:nth-child(5) td:first-child { border-left-color: rgba(233, 30, 99, 0.6); }
+.results-panel tr:nth-child(5) td:last-child { border-right-color: rgba(233, 30, 99, 0.6); }
+/* .results-panel tr:hover td {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(79, 195, 247, 0.6);
+} */
+
+.results-panel th {
+    padding: 8px;
+    font-weight: 600;
+    color: #4fc3f7;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+}

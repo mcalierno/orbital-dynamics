@@ -22,10 +22,11 @@ def test():
 
 @app.route('/run_server', methods=['POST'])
 def run_server():
-    # do some validation checking here
+    # FIXME do some validation checking here
+    ###
     data = request.get_json()
     plt.clf() 
-    results, ani = server_spacecraft.run_model(data["rowValues"])
+    results, ani = server_spacecraft.run_model(data)
 
     # Save the plot to a BytesIO object
     with tempfile.NamedTemporaryFile(delete=False, suffix=".gif") as temp_file:

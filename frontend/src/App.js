@@ -6,6 +6,8 @@ import React, { useState, useEffect } from 'react';
 import InputCollection from './components/InputCollection.js';
 import PlotDisplay from './components/PlotDisplay.js';
 import LoadingVideo from './components/LoadingVideo.js';
+import InitialConditions from './components/InitialConditions.js';
+import ResultsPanel from './components/ResultsPanel.js';
 
 function App() {
     const [plot, setPlot] = useState(null);
@@ -13,11 +15,17 @@ function App() {
     const [rowValues, setRowValues] = useState([
         {F_r: "", F_theta: "", t_thrust: ""}
     ]);
+    const [initialConditions, setInitialConditions] = useState(
+        {dist_horizontal: "-2000", dist_vertical: "-1000"}
+    )
+    const [results, setResults] = useState([""])
 
     return (
         <div className="App">
             <div className="App-body">
                 <img src={logo} height={100}/>
+                <InitialConditions initialConditions={initialConditions} setInitialConditions={setInitialConditions} />
+                <ResultsPanel results={results} />
                 {(!plot && !loading) && (
                     <img src={rocket} style={{padding: "50px"}} alt="logo" height={500}/>
                 )}
@@ -26,10 +34,10 @@ function App() {
                 <div className="image-crop-container">
                     <img src={earth} className="spinning-earth"/>
                 </div>
-                <InputCollection setPlot={setPlot} setLoading={setLoading} rowValues={rowValues} setRowValues={setRowValues}/>
-                <a href="/OrbitalDynamicsEssay.pdf" target="_blank" rel="noopener noreferrer" className="pdf-link">
+                <InputCollection setPlot={setPlot} setLoading={setLoading} rowValues={rowValues} setRowValues={setRowValues} initialConditions={initialConditions} setResults={setResults} />
+                {/* <a href="/OrbitalDynamicsEssay.pdf" target="_blank" rel="noopener noreferrer" className="pdf-link">
                     OrbitalDynamicsEssay.pdf
-                </a>
+                </a> */}
             </div>
         </div>
     );

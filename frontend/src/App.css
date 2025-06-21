@@ -57,7 +57,10 @@
 }
 
 .spinning-earth {
-    width: 2000px;
+    width: 1000vw;
+    margin: 0;
+    margin: 0 auto;
+    display: block;
     /* height: 300px; */
     animation: spinning-earth 300s linear infinite;
 }
@@ -72,11 +75,19 @@
 }
 
 .image-crop-container {
-  /* width: 300px;         */
-  height: 200px;        
+  height: 800px;        
   overflow: hidden;     
   position: relative;
-  margin-bottom: 1.5em;
+  position: fixed;
+  left: 0;
+  padding:0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 
