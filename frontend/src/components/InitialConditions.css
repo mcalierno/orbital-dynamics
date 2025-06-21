@@ -3,15 +3,13 @@
   top: 0;
   left: 0;
   z-index: 10;
-  background: rgba(40, 44, 52, 0.85);
-  padding: 0.3em;
-  border-bottom-right-radius: 16px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
-  min-width: 320px;
+  min-width: unset;      /* Remove min-width */
+  width: auto;           /* Let width fit content */
   display: flex;
   flex-direction: column;
-  gap: 0.3em;
+  gap: 0;                /* Remove gap */
   font-size: 0.75em;
+  padding: 0.2em 0.3em;  /* Minimal padding */
 }
 
 .slider-label {
@@ -72,4 +70,104 @@
     font-weight: 500;
     margin: 0 0 0.3em 0;
     opacity: 0.9;
+}
+
+.toggle-sliders-btn {
+  background: #23293a;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 0.3em 1em;
+  font-size: 0.8em;
+  cursor: pointer;
+  margin-bottom: 0.3em;
+  transition: background 0.2s, color 0.2s;
+  width: fit-content;
+}
+.toggle-sliders-btn:hover {
+  background: #38538b;
+  color: #fff;
+}
+
+.slider-value-input {
+  background: #181c24;
+  color: #b2acac;
+  border: 1px solid #444;
+  border-radius: 4px;
+  padding: 0.3em;
+  text-align: center;
+  font-size: 0.8em;
+  width: 4em;
+  margin-top: 0.2em;
+  transition: border 0.2s;
+}
+.slider-value-input:focus {
+  border: 1.5px solid #4fc3f7;
+  outline: none;
+}
+
+.dist-values-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-size: 0.8em;
+  margin: 0;
+  /* Optionally add a min-height for easier hovering */
+  min-height: 2.5em;
+}
+
+.dist-label {
+  color: #b2acac;
+  margin: 0;
+  padding: 0;
+  line-height: 1.2;
+}
+
+.dist-value {
+  color: #4fc3f7;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+}
+
+.slider-hover-area {
+  position: relative;
+  display: inline-block;
+  /* Increase the hitbox area without affecting layout */
+  padding: 0.5em 1.5em 0.5em 0.5em; /* right padding increases hover area */
+  margin-right: -1em; /* negative margin to visually keep popup close */
+}
+
+.sliders-dropdown {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  min-width: 260px;
+  background: #181c24;
+  border-radius: 8px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  padding: 0.3em;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  z-index: 20;
+}
+
+.slider-hover-area:hover .sliders-dropdown,
+.slider-hover-area:focus-within .sliders-dropdown {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(0);
+}
+
+.initial-conditions-container:hover .sliders-dropdown,
+.toggle-sliders-btn:focus + .sliders-dropdown,
+.dist-values-row:hover + .sliders-dropdown,
+.dist-values-row:focus-within + .sliders-dropdown {
+  max-height: 500px; /* should be larger than the content's height */
+  opacity: 1;
+  padding: 0.3em;
+  pointer-events: auto;
+  transform: translateX(0);
 }
