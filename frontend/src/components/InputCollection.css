@@ -22,21 +22,25 @@
 }
 
 .delete-row-btn{
-    margin-left: 0.5em;
+    margin-left: 0.2em;
     background: none;
     border: none;
     color: red;
-    font-size: 0.9em;
-    line-height: 1;
+    font-size: 0.7em;
+    height: 1.3em;
     cursor: pointer;
     flex-direction: column;
+    align-self: center; 
     align-items: center;
     justify-content: center;
     border-radius: 6px;
     transition: background 0.2s;
+    padding-left: 0.3em;
+    padding-right: 0.3em;
 }
 
 .delete-row-btn:hover {
+  color: #ffffff;
   background: #a83030;
 }
 
@@ -46,20 +50,25 @@
 }
 
 .duplicate-row-btn {
+  margin-right: 0.1em;
   background: none;
   border: none;
-  color: #4caf50;
-  font-size: 1em;
+  color: #ffffff;
+  height: 1.2em;
+  font-size: 0.9em;
   cursor: pointer;
-  margin-left: 0.25em;
+  /* margin-left: 0.25em; */
+  align-self: center; 
   padding-left: 0.3em;
   padding-right: 0.25em;
+  padding-bottom: 1em;
+  padding-top: 0em;
   border-radius: 6px;
   transition: background 0.2s;
 }
 
 .duplicate-row-btn:hover {
-  background: #e8f5e9;
+  background: #626462;
 }
 
 .duplicate-row-btn:disabled {
@@ -70,7 +79,7 @@
 .blur-container {
   z-index: 4;
   background: rgba(77, 83, 95, 0.3); /* semi-transparent background */
-  backdrop-filter: blur(10px);        /* blur the background behind */
+  backdrop-filter: blur(13px);        /* blur the background behind */
   -webkit-backdrop-filter: blur(10px);/* for Safari support */
   border-radius: 50px;
   position: absolute;
@@ -78,3 +87,22 @@
   margin-bottom: 1.5em;
   padding: 0.5em;
 }
+
+.input-row-colored {
+    border: 2.5px solid;
+    border-radius: 20px;
+    padding: 0em 0.7em;
+    margin-bottom: 0.5em;
+    background: rgba(255,255,255,0.01);
+}
+
+/* Blue */
+.input-row-color-1 { border-color: rgba(79, 195, 247, 0.6); }
+/* Green */
+.input-row-color-2 { border-color: rgba(76, 175, 80, 0.6); }
+/* Yellow */
+.input-row-color-3 { border-color: rgba(255, 235, 59, 0.6); }
+/* Red */
+.input-row-color-4 { border-color: rgba(244, 67, 54, 0.6); }
+/* Cyan */
+.input-row-color-5 { border-color: rgba(0, 188, 212, 0.6); }

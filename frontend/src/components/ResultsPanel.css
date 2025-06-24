@@ -47,46 +47,46 @@
     border-radius: 0 6px 6px 0;
 }
 
-/* Update the row-specific colors to include all border sides */
+
 /* Row 1 - Blue */
 .results-panel tr:nth-child(1) td {
-    border-top-color: rgba(79, 195, 247, 0.6);
-    border-bottom-color: rgba(79, 195, 247, 0.6);
+    border-top-color: rgba(8, 32, 172, 0.6);
+    border-bottom-color: rgba(8, 32, 172, 0.6);
 }
 .results-panel tr:nth-child(1) td:first-child { border-left-color: rgba(79, 195, 247, 0.6); }
 .results-panel tr:nth-child(1) td:last-child { border-right-color: rgba(79, 195, 247, 0.6); }
 
-/* Row 2 - Purple */
+/* Row 2 - Green */
 .results-panel tr:nth-child(2) td {
-    border-top-color: rgba(171, 71, 188, 0.6);
-    border-bottom-color: rgba(171, 71, 188, 0.6);
-}
-.results-panel tr:nth-child(2) td:first-child { border-left-color: rgba(171, 71, 188, 0.6); }
-.results-panel tr:nth-child(2) td:last-child { border-right-color: rgba(171, 71, 188, 0.6); }
-
-/* Row 3 - Green */
-.results-panel tr:nth-child(3) td {
     border-top-color: rgba(76, 175, 80, 0.6);
     border-bottom-color: rgba(76, 175, 80, 0.6);
 }
-.results-panel tr:nth-child(3) td:first-child { border-left-color: rgba(76, 175, 80, 0.6); }
-.results-panel tr:nth-child(3) td:last-child { border-right-color: rgba(76, 175, 80, 0.6); }
+.results-panel tr:nth-child(2) td:first-child { border-left-color: rgba(76, 175, 80, 0.6); }
+.results-panel tr:nth-child(2) td:last-child { border-right-color: rgba(76, 175, 80, 0.6); }
 
-/* Row 4 - Orange */
+/* Row 3 - Yellow */
+.results-panel tr:nth-child(3) td {
+    border-top-color: rgba(255, 235, 59, 0.6);
+    border-bottom-color: rgba(255, 235, 59, 0.6);
+}
+.results-panel tr:nth-child(3) td:first-child { border-left-color: rgba(255, 235, 59, 0.6); }
+.results-panel tr:nth-child(3) td:last-child { border-right-color: rgba(255, 235, 59, 0.6); }
+
+/* Row 4 - Red */
 .results-panel tr:nth-child(4) td {
-    border-top-color: rgba(255, 152, 0, 0.6);
-    border-bottom-color: rgba(255, 152, 0, 0.6);
+    border-top-color: rgba(244, 67, 54, 0.6);
+    border-bottom-color: rgba(244, 67, 54, 0.6);
 }
-.results-panel tr:nth-child(4) td:first-child { border-left-color: rgba(255, 152, 0, 0.6); }
-.results-panel tr:nth-child(4) td:last-child { border-right-color: rgba(255, 152, 0, 0.6); }
+.results-panel tr:nth-child(4) td:first-child { border-left-color: rgba(244, 67, 54, 0.6); }
+.results-panel tr:nth-child(4) td:last-child { border-right-color: rgba(244, 67, 54, 0.6); }
 
-/* Row 5 - Pink */
+/* Row 5 - Cyan */
 .results-panel tr:nth-child(5) td {
-    border-top-color: rgba(233, 30, 99, 0.6);
-    border-bottom-color: rgba(233, 30, 99, 0.6);
+    border-top-color: rgba(0, 188, 212, 0.6);
+    border-bottom-color: rgba(0, 188, 212, 0.6);
 }
-.results-panel tr:nth-child(5) td:first-child { border-left-color: rgba(233, 30, 99, 0.6); }
-.results-panel tr:nth-child(5) td:last-child { border-right-color: rgba(233, 30, 99, 0.6); }
+.results-panel tr:nth-child(5) td:first-child { border-left-color: rgba(0, 188, 212, 0.6); }
+.results-panel tr:nth-child(5) td:last-child { border-right-color: rgba(0, 188, 212, 0.6); }
 /* .results-panel tr:hover td {
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(79, 195, 247, 0.6);

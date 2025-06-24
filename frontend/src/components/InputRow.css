@@ -7,14 +7,23 @@ input[type="number"]::-webkit-inner-spin-button {
 
 input[type="number"] {
     -moz-appearance: textfield; /* Hide number input spinners for Firefox */
-    border-radius: 10px; 
-    border: 1px solid #ccc;
+    border-radius: 10px;
+    border: 1.5px solid #ffffff; /* Subtle blue border */
+    background: rgba(255,255,255,0.08);
+    color: #e3f2fd;
     padding: 0.2em 0.5em;
     margin: 1em;
-    margin-right: 3em;
-    /* outline: none; */
+    margin-left:1.5em;
+    margin-right:1.5em;
     font-size: 0.4em;
-    width: 8em;
+    width: 4.5em;
     z-index: 2;
-    /* box-sizing: border-box; */
+    transition: border-color 0.2s, box-shadow 0.2s;
+    text-align: center; /* Center the input text */
+}
+
+input[type="number"]:focus {
+    border-color: #00bcd4; /* Cyan highlight on focus */
+    box-shadow: 0 0 0 2px rgba(0,188,212,0.15);
+    outline: none;
 }

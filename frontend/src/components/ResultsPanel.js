@@ -10,17 +10,17 @@ export default function ResultsPanel({ results }) {
                 <thead>
                     <tr>
                         {Object.keys(results[0]).map((key) => (
-                            <th key={key}>{key}</th>
+                            <th key={key} dangerouslySetInnerHTML={{ __html: key }} />
                         ))}
                     </tr>
                 </thead>
                 <tbody>
                     {results.map((row, idx) => (
-                        <tr key={idx} className={idx % 2 === 0 ? 'row-even' : 'row-odd'}>
+                        <tr key={idx} >
                             {Object.values(row).map((val, i) => (
                                 <td key={i}>
                                     {typeof val === "number"
-                                        ? val.toFixed(1)
+                                        ? (val % 1 !== 0 ? val.toFixed(1) : val)
                                         : val}
                                 </td>
                             ))}
