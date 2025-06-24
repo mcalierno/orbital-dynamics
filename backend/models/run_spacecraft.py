@@ -15,6 +15,7 @@ class RunSpacecraft(Spacecraft):
     results=[]
     lx_list=[]
     ly_list=[]
+    phi_m_list=[]
 
     z0 = float(data["initialConditions"].get("dist_vertical"))
     phi0_m = float(data["initialConditions"].get("dist_horizontal"))
@@ -26,10 +27,19 @@ class RunSpacecraft(Spacecraft):
 
         self.set_params(F_r, F_theta, t_thrust, z0, phi0_m)
         self.iterate(tmax=4000)
+        phi_m_list.append(self.phi_m) # could be made more elegant
         tmin, dmin = self.min_dist_to_target()
-        results.append({"Fr":F_r, "Ftheta":F_theta, "t_thrust":t_thrust, "dmin":dmin, "tmin":tmin, "Fuel":(abs(F_r)+abs(F_theta))*t_thrust})
+        results.append({
+            "F<sub>r</sub>": F_r,
+            "F<sub>θ</sub>": F_theta,
+            "T": t_thrust,
+            "d<sub>min</sub>": dmin,
+            "t<sub>min</sub>": tmin,
+            "⛽(kg)": (abs(F_r) + abs(F_theta)) * t_thrust
+        })
         
-        lx_list.append([v[index_phi] for v in self.V_list])
+        lx_list = phi_m_list
+        # lx_list.append([v[index_phi] for v in self.V_list])
         ly_list.append([v[index_z] for v in self.V_list])
     
     ani = self.draw_animation(lx_list, ly_list, duration_sec=2)
@@ -37,10 +47,10 @@ class RunSpacecraft(Spacecraft):
   
 
   def draw_animation(self, list_of_lx, list_of_ly, duration_sec=2):
-    fig, ax = plt.subplots()
-    fig.patch.set_facecolor('black')
-    ax.set_facecolor('black')
-
+    fig, ax = plt.subplots(figsize=(10, 5))
+    fig.patch.set_facecolor('black')  
+    ax.set_facecolor('black')          
+    ax.tick_params(axis='both', which='both', length=0, colors='white')
     n_lines = len(list_of_lx)
 
     color_cycle = plt.rcParams['axes.prop_cycle'].by_key()['color']
@@ -55,10 +65,19 @@ class RunSpacecraft(Spacecraft):
     # Set axis limits based on all data
     all_x = np.concatenate(list_of_lx)
     all_y = np.concatenate(list_of_ly)
-    ax.set_xlim(all_x.min(), all_x.max())
-    ax.set_ylim(all_y.min(), all_y.max())
-    # ax.set_ylim(-1000, 1000)
+    # ax.set_xlim(all_x.min(), all_x.max())
+    # ax.set_ylim(all_y.min(), all_y.max())
+    ax.set_ylim(-1000, 1000)
+    ax.set_xlim(-2000, 2000)
+    ax.set_xticks([-2000, 2000])
+    ax.set_yticks([-1000, 1000])
+    ax.set_xticklabels(['-2000', '2000'])
+    ax.set_yticklabels(['-1000', '1000'])
     ax.plot(0, 0, 'r+')
+
+
+    ax.xaxis.tick_top()
+
 
     def init():
         for line in lines:

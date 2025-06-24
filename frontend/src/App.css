@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 30vmin;
   pointer-events: none;
 }
 
@@ -27,7 +27,7 @@
 } */
 
 .App-body {
-  background: radial-gradient(circle at 50% 25%, #000002 18%, #282c34 60%);
+  background: radial-gradient(circle at 50% 25%, #000002 40%, #282c34 70%);
   /* background-color: #282c34; */
   min-height: 100vh;
   display: flex;
@@ -75,7 +75,7 @@
 }
 
 .image-crop-container {
-  height: 800px;        
+  height: 50vh;        
   overflow: hidden;     
   position: relative;
   position: fixed;

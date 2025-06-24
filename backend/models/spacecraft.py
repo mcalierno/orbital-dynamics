@@ -35,7 +35,7 @@ class Spacecraft(OrbitalDynamicsODE):
         
         z0 = z0
         v_z0 = 0
-        phi0 = phi0_m/self.r_0
+        phi0 = phi0_m/self.r_0  # Using cosine small angle approximation
         v_phi0 = math.sqrt(self.G*self.M_E/(self.r_0+z0)**3)-self.omega_0
         t0 = 0
         

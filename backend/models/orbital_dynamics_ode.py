@@ -25,6 +25,7 @@ class OrbitalDynamicsODE(ODE_RK4):
         self.d_butlast = -1
         self.d_min = []
         self.d_max = []
+        self.phi_m = []
 
     
     # Reset the integration parameters; see __init__ for more info
@@ -35,6 +36,7 @@ class OrbitalDynamicsODE(ODE_RK4):
         self.d_butlast = -1
         self.d_min = []
         self.d_max = []
+        self.phi_m = []
     
     
     # Solve the system of equations:
@@ -83,6 +85,10 @@ class OrbitalDynamicsODE(ODE_RK4):
         self.d_butlast = self.d_last
         self.d_last = d_curr
         self.t_last = self.t
+
+        z = self.V[0]
+        pos_neg = 1 if self.V[2]>0 else -1   # get whether phi is postive or negative
+        self.phi_m.append(pos_neg * np.sqrt(abs(d_curr**2 - z**2)))    # get horizontal distance from obj using pythagorus
         
     # Returns the time and distance of the smallest local minimum ocurring after t_after
     def min_min(self, t_after=0):      
