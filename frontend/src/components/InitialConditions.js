@@ -46,18 +46,21 @@ export default function InitialConditions({ initialConditions, setInitialConditi
                                 className="dist-value-input"
                                 style={{ width: "3em", fontSize: "1em", textAlign: "center" }}
                             />
-                            <span> m</span>
+                            <span style={{ color: "#4fc3f7" }}> m</span>
                         </>
                     ) : (
-                        <span
-                            className="dist-value"
-                            tabIndex={0}
-                            style={{ cursor: "pointer" }}
-                            onClick={() => setEditing(e => ({ ...e, x: true }))}
-                            onFocus={() => setEditing(e => ({ ...e, x: true }))}
-                        >
-                            {initialConditions.dist_horizontal} m
-                        </span>
+                        <>
+                            <span
+                                className="dist-value"
+                                tabIndex={0}
+                                style={{ cursor: "pointer" }}
+                                onClick={() => setEditing(e => ({ ...e, x: true }))}
+                                onFocus={() => setEditing(e => ({ ...e, x: true }))}
+                            >
+                                {initialConditions.dist_horizontal}
+                            </span>
+                            <span style={{ color: "#4fc3f7" }}> m</span>
+                        </>
                     )}
                 </span>
                 <span className="dist-label">
@@ -80,18 +83,21 @@ export default function InitialConditions({ initialConditions, setInitialConditi
                                 className="dist-value-input"
                                 style={{ width: "3em", fontSize: "1em", textAlign: "center" }}
                             />
-                            <span className="dist-value-input"> m</span>
+                            <span style={{ color: "#4fc3f7" }}> m</span>
                         </>
                     ) : (
-                        <span
-                            className="dist-value"
-                            tabIndex={0}
-                            style={{ cursor: "pointer" }}
-                            onClick={() => setEditing(e => ({ ...e, y: true }))}
-                            onFocus={() => setEditing(e => ({ ...e, y: true }))}
-                        >
-                            {initialConditions.dist_vertical} m
-                        </span>
+                        <>
+                            <span
+                                className="dist-value"
+                                tabIndex={0}
+                                style={{ cursor: "pointer" }}
+                                onClick={() => setEditing(e => ({ ...e, y: true }))}
+                                onFocus={() => setEditing(e => ({ ...e, y: true }))}
+                            >
+                                {initialConditions.dist_vertical}
+                            </span>
+                            <span style={{ color: "#4fc3f7" }}> m</span>
+                        </>
                     )}
                 </span>
             </div>

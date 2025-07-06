@@ -90,5 +90,13 @@
   align-items: flex-start;
 }
 
+.about-button {
+    position: absolute;
+    top: 0m;
+    right: 0em;
+    font-size: 0.5em;
+    z-index: 200;
+}
+
 
 

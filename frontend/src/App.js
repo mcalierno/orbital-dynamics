@@ -8,6 +8,7 @@ import PlotDisplay from './components/PlotDisplay.js';
 import LoadingVideo from './components/LoadingVideo.js';
 import InitialConditions from './components/InitialConditions.js';
 import ResultsPanel from './components/ResultsPanel.js';
+import AboutPage from './components/AboutPage.js'
 
 function App() {
     const [plot, setPlot] = useState(null);
@@ -23,6 +24,9 @@ function App() {
     return (
         <div className="App">
             <div className="App-body">
+                <div className="about-button">
+                    <AboutPage />
+                </div>
                 <img src={logo} height={100}/>
                 <InitialConditions initialConditions={initialConditions} setInitialConditions={setInitialConditions} />
                 <ResultsPanel results={results} />
