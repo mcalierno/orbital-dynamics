@@ -7,7 +7,7 @@ Originally starting as a University project to calculate the trajectories of spa
 Variable names are designed to mirror their mathematical notation so for a more in depth explanation and derivation please see [OrbitalDynamicsEssay.pdf](./OrbitalDynamicsEssay.pdf).
 
 
-#### Goal
+### Goal
 
 Your goal is to fire your spacecraft's thrusters to intercept a target in orbit using the least amount of fuel possible.
 
