@@ -19,28 +19,54 @@
     background: rgba(79, 195, 247, 0.08);
 }
 
-.about-dropdown {
-    display: block;
-    position: absolute;
-    right: 0; 
-    left: auto; 
-    top: 100%;
-    min-width: 300px;
-    background: #23272f;
-    color: #e3f2fd;
-    border-radius: 8px;
-    box-shadow: 0 4px 16px rgba(40,44,52,0.18);
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(-10px);
-    transition: opacity 0.3s, transform 0.3s;
-    z-index: 100;
+
+/* Modal overlay styles */
+.about-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(30, 34, 44, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
 }
 
-.about-dropdown.show {
-    opacity: 1;
-    pointer-events: auto;
-    transform: translateY(0);
+/* Modal box styles */
+.about-modal {
+    background: #23272f;
+    color: #e3f2fd;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(40,44,52,0.22);
+    padding: 2em 2.5em 2em 2.5em;
+    max-width: 700px;
+    width: 90vw;
+    position: relative;
+    text-align: left;
+    animation: modalFadeIn 0.3s;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.about-modal-close {
+    position: absolute;
+    top: 18px;
+    right: 22px;
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: #b0b0b0;
+    cursor: pointer;
+    transition: color 0.2s;
+    z-index: 10;
+}
+.about-modal-close:hover {
+    color: #4fc3f7;
 }
 
 .about-content {
@@ -48,10 +74,30 @@
     text-align: left;
 }
 
-.about-gif {
+.about-content p {
+    text-align: justify;
+}
+
+.about-mp4 {
     display: block;
-    margin: 1em auto 0 auto;
-    max-width: 200px;
-    border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(40,44,52,0.12);
+    margin: 0.5em auto 2em auto;
+    width: 675px;
+    max-width: 90vw;
+    border-radius: 10px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.18);
+}
+
+.about-pdf-link {
+    display: block;
+    text-align: center;
+    margin: 1.2em auto 0 auto;
+    color: #4fc3f7;
+    font-size: 1.05em;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.about-pdf-link:hover {
+    color: #455bc1;
+    text-decoration:
 }

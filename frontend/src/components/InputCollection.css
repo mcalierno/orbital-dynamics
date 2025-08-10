@@ -97,7 +97,7 @@
 }
 
 /* Blue */
-.input-row-color-1 { border-color: rgba(79, 195, 247, 0.6); }
+.input-row-color-1 { border-color: rgba(0, 13, 255, 0.932); }
 /* Green */
 .input-row-color-2 { border-color: rgba(76, 175, 80, 0.6); }
 /* Yellow */
@@ -105,4 +105,4 @@
 /* Red */
 .input-row-color-4 { border-color: rgba(244, 67, 54, 0.6); }
 /* Cyan */
-.input-row-color-5 { border-color: rgba(0, 188, 212, 0.6); }
+.input-row-color-5 { border-color: rgba(0, 188, 212, 0.8); }
