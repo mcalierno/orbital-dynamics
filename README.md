@@ -11,9 +11,9 @@ Variable names are designed to mirror their mathematical notation so for a more 
 
 Your goal is to fire your spacecraft's thrusters to intercept a target in orbit using the least amount of fuel possible.
 
-Adjust your starting position relative to the target and enter your thrust values in the horizontal direction (Fθ), vertical direction (Fr), and the duration for which you fire your thrusters (t).
+Adjust your starting position relative to the target and enter your thrust values in the horizontal direction (F<sub>θ</sub>), vertical direction (F<sub>r</sub>), and the duration for which you fire your thrusters (t).
 
-The time and distance of your closest approach (tmin, dmin) will be calculated for you, along with the total fuel used in KG.
+The time and distance of your closest approach (t<sub>min</sub>, d<sub>min</sub>) will be calculated for you, along with the total fuel used in KG.
 
 It is not as simple as firing directly at the target! Due to the nature of orbital dynamics, as your velocity in orbit increases, by definition your altitude also increases, so you end up behind/above the target, as demonstrated below:
 
