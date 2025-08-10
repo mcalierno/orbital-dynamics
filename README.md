@@ -17,4 +17,4 @@ The time and distance of your closest approach (tmin, dmin) will be calculated f
 
 It is not as simple as firing directly at the target! Due to the nature of orbital dynamics, as your velocity in orbit increases, by definition your altitude also increases, so you end up behind/above the target, as demonstrated below:
 
-![Demo](./public/aboutGif.gif)
+![Demo](./frontend/public/aboutGif.gif)
