@@ -13,3 +13,27 @@
   -webkit-mask-image: radial-gradient(circle, #282c34 100%, transparent 10%);
   mask-image: radial-gradient(#282c34 30%, transparent 55%);
 }
+
+
+
+.loading-fade-text {
+  display: block;
+  margin: 2em auto 0 auto;
+  color: #b0b0b0;
+  font-size: 1em;
+  font-weight: 600;
+  text-align: center;
+  /* letter-spacing: 0.12em; */
+  text-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  /* font-family: 'Montserrat', 'Arial Black', Arial, sans-serif; */
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeInOut 3s infinite;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  /* 80% { opacity: 1; } */
+  100% { opacity: 0; }
+}

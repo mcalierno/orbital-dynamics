@@ -16,7 +16,7 @@ export default function AboutPage() {
                         <button className="about-modal-close" onClick={() => setOpen(false)}>&times;</button>
                         <div className="about-content">
                             <p>
-                                Your goal is to fire your spacecraft's thrusters to intercept a target in orbit using the least amount of fuel possible.<br /><br />
+                                The goal is to fire your spacecraft's thrusters to intercept a target in orbit using the least amount of fuel possible.<br /><br />
                                 
                                 Adjust your starting position relative to the target and enter your thrust values in the horizontal direction (F<sub>&theta;</sub>),
                                 vertical direction (F<sub>r</sub>), and the duration for which you fire your thrusters (t).<br /><br />

@@ -53,7 +53,7 @@ export default function InputCollection ({ rowValues, setRowValues, setPlot, set
             <form onSubmit={handleSubmit}>
                 {/* Column headers */}
                 <div style={{ display: "flex", alignItems: "center", justifyContent: "center", margin: "0.2em", fontWeight: "bold", color: "#4fc3f7", fontSize: "0.8em" }}>
-                    <div style={{ marginRight: "1em" }}>F<sub>r</sub>(N)</div>
+                    <div style={{ marginLeft: "0.8em", marginRight: "1em" }}>F<sub>r</sub>(N)</div>
                     <div style={{ marginLeft: "1em", marginRight: "1em" }}>F<sub>&theta;</sub>(N)</div>
                     <div style={{ marginLeft: "1em", marginRight: "1em" }}>t(s)</div>
                 </div>

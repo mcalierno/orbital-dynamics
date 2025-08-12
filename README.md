@@ -9,7 +9,7 @@ Variable names are designed to mirror their mathematical notation so for a more 
 
 ### Goal
 
-Your goal is to fire your spacecraft's thrusters to intercept a target in orbit using the least amount of fuel possible.
+The goal is to fire your spacecraft's thrusters to intercept a target in orbit using the least amount of fuel possible.
 
 Adjust your starting position relative to the target and enter your thrust values in the horizontal direction (F<sub>θ</sub>), vertical direction (F<sub>r</sub>), and the duration for which you fire your thrusters (t).
 

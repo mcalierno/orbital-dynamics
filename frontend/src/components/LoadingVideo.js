@@ -10,7 +10,7 @@ export default function LoadingVideo({ loading, rowValues }) {
         2:  3.25,
         3:  2,
         4:  1.75,
-        5:  1.25,
+        5:  1,
     }
 
     return (
@@ -21,6 +21,7 @@ export default function LoadingVideo({ loading, rowValues }) {
                         ref={videoRef}
                         src="/loading.mov"
                         autoPlay
+                        loop
                         width="720"
                         height="540"
                         className="loading-video"
@@ -30,6 +31,7 @@ export default function LoadingVideo({ loading, rowValues }) {
                             }
                         }}
                     />
+                    <div className="loading-fade-text">LOADING...</div>
                 </div>)}
         </>
     )
